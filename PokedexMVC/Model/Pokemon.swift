@@ -20,7 +20,6 @@ class Pokemon {
     var attack: Int?
     var description: String?
     var type: String?
-    var baseExperience: Int?
     
     init(id: Int, dictionary: [String: AnyObject]) {
         

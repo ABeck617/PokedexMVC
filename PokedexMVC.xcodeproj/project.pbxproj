@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23186EC821EA7D3C0071520C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23186EC721EA7D3C0071520C /* InfoView.swift */; };
 		23B062C821E55B49002234EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B062C721E55B49002234EA /* AppDelegate.swift */; };
 		23B062CD21E55B49002234EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B062CB21E55B49002234EA /* Main.storyboard */; };
 		23B062CF21E55B4B002234EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B062CE21E55B4B002234EA /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23186EC721EA7D3C0071520C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		23B062C421E55B49002234EA /* PokedexMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B062C721E55B49002234EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B062CC21E55B49002234EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				23B062E221E55D76002234EA /* PokedexCell.swift */,
+				23186EC721EA7D3C0071520C /* InfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				23B062E121E55C7D002234EA /* Extensions.swift in Sources */,
 				23B062C821E55B49002234EA /* AppDelegate.swift in Sources */,
 				23B062F121E6C1D7002234EA /* Service.swift in Sources */,
+				23186EC821EA7D3C0071520C /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

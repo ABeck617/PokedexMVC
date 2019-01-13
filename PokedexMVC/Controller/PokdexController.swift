@@ -15,6 +15,9 @@ class PokedexController: UICollectionViewController {
     // MARK: - Properties
     
     var pokemon = [Pokemon]()
+    var filteredPokemon = [Pokemon]()
+    var inSearchMode = false
+    var searchBar: UISearchBar!
     
     let infoView: InfoView = {
         let view = InfoView()
@@ -40,7 +43,7 @@ class PokedexController: UICollectionViewController {
     // MARK: - Selectors
     
     @objc func showSearchBar() {
-        print(124)
+        configureSearchBar()
     }
     
     @objc func handleDismissal() {
@@ -59,6 +62,23 @@ class PokedexController: UICollectionViewController {
     }
     
     // MARK: - Helper Functions
+    
+    func configureSearchBar() {
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        searchBar.showsCancelButton = true
+        searchBar.becomeFirstResponder()
+        searchBar.tintColor = .white
+        
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.titleView = searchBar
+    }
+    
+    func configureSearchBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+    }
     
     func dismissInfoView(pokemon: Pokemon?) {
         UIView.animate(withDuration: 0.5, animations: {
@@ -79,9 +99,7 @@ class PokedexController: UICollectionViewController {
         
         navigationItem.title = "Pokedex"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
-        
-        navigationItem.rightBarButtonItem?.tintColor = .white
+       configureSearchBarButton()
         
         collectionView.register(PokedexCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -91,25 +109,54 @@ class PokedexController: UICollectionViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(handleDismissal))
         visualEffectView.addGestureRecognizer(gesture)
-
     }
 }
+
+// MARK: - UISearchBarDelegate
+
+extension PokedexController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        navigationItem.titleView = nil
+        configureSearchBarButton()
+        inSearchMode = false
+        collectionView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" || searchBar.text == nil {
+            inSearchMode = false
+            collectionView.reloadData()
+            view.endEditing(true)
+        } else {
+            inSearchMode = true
+            filteredPokemon = pokemon.filter({ $0.name?.range(of: searchText.lowercased()) != nil })
+            collectionView.reloadData()
+        }
+    }
+}
+
+// MARK: - UICollectionViewDataSource/Delegate
 
 extension PokedexController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemon.count
+        return inSearchMode ? filteredPokemon.count : pokemon.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokedexCell
         
-        cell.pokemon = pokemon[indexPath.item]
-        cell.delegate = self 
+        cell.pokemon = inSearchMode ? filteredPokemon[indexPath.row] : pokemon[indexPath.row]
+        
+        cell.delegate = self
         
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension PokedexController: UICollectionViewDelegateFlowLayout {
     
@@ -121,10 +168,10 @@ extension PokedexController: UICollectionViewDelegateFlowLayout {
         
         let width = (view.frame.width - 36) / 3
         return CGSize(width: width, height: width)
-        
     }
-    
 }
+
+// MARK: - PokedexCellDelegate
 
 extension PokedexController: PokedexCellDelegate {
     
@@ -147,6 +194,8 @@ extension PokedexController: PokedexCellDelegate {
         }
     }
 }
+
+// MARK: - InfoViewDelegate
 
 extension PokedexController: InfoViewDelegate {
     

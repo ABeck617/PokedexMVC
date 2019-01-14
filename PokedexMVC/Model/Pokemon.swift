@@ -57,5 +57,4 @@ class Pokemon {
             self.type = type.capitalized
         }
     }
-    
 }

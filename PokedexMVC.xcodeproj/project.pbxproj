@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23186EC821EA7D3C0071520C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23186EC721EA7D3C0071520C /* InfoView.swift */; };
+		23186EFF21ECFE8F0071520C /* PokemonInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23186EFE21ECFE8F0071520C /* PokemonInfoController.swift */; };
 		23B062C821E55B49002234EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B062C721E55B49002234EA /* AppDelegate.swift */; };
 		23B062CD21E55B49002234EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B062CB21E55B49002234EA /* Main.storyboard */; };
 		23B062CF21E55B4B002234EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B062CE21E55B4B002234EA /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		23186EC721EA7D3C0071520C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		23186EFE21ECFE8F0071520C /* PokemonInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoController.swift; sourceTree = "<group>"; };
 		23B062C421E55B49002234EA /* PokedexMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B062C721E55B49002234EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B062CC21E55B49002234EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				23B062DE21E55B84002234EA /* PokdexController.swift */,
+				23186EFE21ECFE8F0071520C /* PokemonInfoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				23B062C821E55B49002234EA /* AppDelegate.swift in Sources */,
 				23B062F121E6C1D7002234EA /* Service.swift in Sources */,
 				23186EC821EA7D3C0071520C /* InfoView.swift in Sources */,
+				23186EFF21ECFE8F0071520C /* PokemonInfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
